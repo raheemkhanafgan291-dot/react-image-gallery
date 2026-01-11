@@ -1,76 +1,53 @@
-import React, { useEffect, useState, useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
-import "./App.css";
+import "./ImageGallery.css";
 
-const FirstComp = () => {
-  const [userData, setUserData] = useState([]);
-  const [index, setIndex] = useState(1);
+const ImageGallery = () => {
+  const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(1);
 
-  // ✅ useCallback fixes eslint dependency warning
-  const getData = useCallback(async () => {
+  const fetchImages = useCallback(async () => {
+    setLoading(true);
     try {
-      setLoading(true);
-      const response = await axios.get(
-        `https://picsum.photos/v2/list?page=${index}&limit=10`
+      const res = await axios.get(
+        `https://picsum.photos/v2/list?page=${page}&limit=12`
       );
-      setUserData(response.data);
+      setImages(res.data);
     } catch (error) {
       console.error("Error fetching images", error);
     } finally {
       setLoading(false);
     }
-  }, [index]);
+  }, [page]);
 
-  // ✅ useEffect with proper dependency
   useEffect(() => {
-    getData();
-  }, [getData]);
+    fetchImages();
+  }, [fetchImages]);
 
   return (
-    <div className="mainsection">
-      <div className="user-data">
-        {loading ? (
-          <h3 className="Loading">Loading...</h3>
-        ) : (
-          userData.map((elem) => (
-            <div key={elem.id} className="img-div-wrapper">
-              <a href={elem.url} target="_blank" rel="noreferrer">
-                <div className="img-div">
-                  <img
-                    className="img-box"
-                    src={elem.download_url}
-                    alt={elem.author}
-                  />
-                </div>
-                <h2>{elem.author}</h2>
-              </a>
-            </div>
-          ))
-        )}
+    <div className="gallery-container">
+      <h1>Image Gallery</h1>
+
+      {loading && <p className="loading">Loading...</p>}
+
+      <div className="gallery">
+        {images.map((img) => (
+          <div key={img.id} className="card">
+            <img
+              src={`https://picsum.photos/id/${img.id}/400/300`}
+              alt={img.author}
+            />
+            <p>{img.author}</p>
+          </div>
+        ))}
       </div>
 
-      <div className="btnsec">
-        <button
-          className="btn"
-          disabled={index === 1 || loading}
-          onClick={() => setIndex(index - 1)}
-        >
-          Previous
-        </button>
-
-        <h1>{index}</h1>
-
-        <button
-          className="btn1"
-          disabled={loading}
-          onClick={() => setIndex(index + 1)}
-        >
-          Next
-        </button>
-      </div>
+      <button className="btn" onClick={() => setPage(page + 1)}>
+        Load More
+      </button>
     </div>
   );
 };
 
-export default FirstComp;
+export default ImageGallery;
