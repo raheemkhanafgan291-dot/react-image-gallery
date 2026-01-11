@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
-import "./ImageGallery.css";
+import './App.css'; 
 
 const ImageGallery = () => {
   const [images, setImages] = useState([]);
@@ -44,7 +44,7 @@ const ImageGallery = () => {
       </div>
 
       <button className="btn" onClick={() => setPage(page + 1)}>
-        Load More
+        Next Page
       </button>
     </div>
   );

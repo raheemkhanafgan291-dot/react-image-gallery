@@ -49,8 +49,10 @@ h1 {
   color: white;
   border-radius: 6px;
   cursor: pointer;
+   transition: transform 0.5s ease;
 }
 
 .btn:hover {
   background: #0056b3;
+   transform: scale(1.5) translateY(-5px);
 }
