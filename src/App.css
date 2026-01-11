@@ -1,0 +1,98 @@
+*{
+   margin: 0px;
+   padding: 0px;
+}
+button{
+   all: unset;
+   padding: 0;
+   line-height: normal;
+}
+body{
+   background-color: black ;
+   color: white;
+   height: auto;
+   width: auto;
+}
+
+.mainsection{
+      
+}
+.img-box{
+   width: 300px;
+   height: 300px;
+   object-fit: cover;
+   display: block;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+.img-box:hover{
+   transform: scale(1.05);
+}
+.card{
+   background-color: #111;
+   padding: 10px;
+   border-radius: 12px;
+}
+.user-data{
+   display: flex;
+   flex-wrap: wrap;
+   gap: 7px;
+}
+.img-div{
+    height: auto;
+    width: auto;
+   background-color: black
+}
+.btnsec{
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  display: flex;
+}
+
+.btn{
+   height: 40px;
+   width: 65px;
+   background-color: yellow;
+   color: black;
+   justify-content: center;
+   align-items: center;
+   border: 5px solid black;
+   border-radius: 10px;
+   box-sizing: border-box;
+   cursor: pointer;
+   transition: 0.3s;
+}
+.btn1{
+    height: 40px;
+   width: 65px;
+   background-color: yellow ;
+   color: black;
+   justify-content: center;
+   align-items: center;
+   border: 5px solid black;
+   border-radius: 10px;
+   box-sizing: border-box;
+   display: flex;
+   cursor: pointer;
+   transition: 0.3s;
+}
+.btn:active{
+   transform: translateZ(4px);
+   box-shadow: 0 0 0 black;
+   scale: 0.50;
+}
+.btn1:active{
+   transform: translateZ(4px);
+   box-shadow: 0 0 0 black;
+   scale: 0.50;
+}
+h3{
+   margin-left: 50%;
+   animation: spin 1s linear infinite;
+  
+   
+
+  
+}
