@@ -1,6 +1,6 @@
-
-import './App.css';
-import FirstComp from './props/FirstComp';              
+import './App.css'; // go one folder up
+import FirstComp from './FirstComp'; 
+import ImageGallery from './ImageGallery'             
 
 function App() {
   return (
@@ -8,6 +8,7 @@ function App() {
      <h1>Use Effect </h1>
      
      <FirstComp/>
+     <ImageGallery/>
         
     </div>
   );
