@@ -27,7 +27,7 @@ const ImageGallery = () => {
 
   return (
     <div className="gallery-container">
-      <h1>Image Gallery</h1>
+      <h1 className="img-box">Image Gallery</h1>
 
       {loading && <p className="loading">Loading...</p>}
 
