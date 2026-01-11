@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
 import './App.css'; 
 
@@ -8,21 +8,18 @@ const FirstComp = () => {
   const [index, setIndex] = useState(1);
   const [loading, setLoading] = useState(true);
 
-  const getData = async () => {
-    setLoading(true);
-    try {
-      const response = await axios.get(`https://picsum.photos/v2/list?page=${index}&limit=10`);
-      setUserData(response.data);
-      setLoading(false);
-    } catch (err) {
-      console.error(err);
-      setLoading(false);
-    }
-  };
+const getData = useCallback(async () => {
+  const response = await axios.get(
+    `https://picsum.photos/v2/list?page=${index}&limit=10`
+  )
+  setUserData(response.data)
+}, [index])
 
-  useEffect(() => {
-    getData();
-  }, [index]);
+
+useEffect(() => {
+  getData()
+}, [getData])
+
 
   return (
     <div className='mainsection'>
